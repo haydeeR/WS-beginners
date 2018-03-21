@@ -19,9 +19,10 @@ class GameViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var scoreLabels: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        StartNewRound()
+        startNewRound()
         updatLabels()
     }
 
@@ -43,18 +44,21 @@ class GameViewController: UIViewController {
         """
         
         let alert = UIAlertController(title: "Puntuacion", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Genial", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Genial", style: .default, handler: {action in
+            self.startNewRound()
+            self.updatLabels()
+        })
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
-        StartNewRound()
-        updatLabels()
+        //startNewRound()
+        //updatLabels()
         
     }
     @IBAction func sliderMove(_ sender: UISlider) {
         self.currentValue = lroundf(sender.value)
     }
     
-    func StartNewRound(){
+    func startNewRound(){
         self.targetValue = 1 + Int(arc4random_uniform(100))
         self.currentValue = 50
         self.slider.value = Float(self.currentValue)
@@ -70,7 +74,7 @@ class GameViewController: UIViewController {
     @IBAction func restartAction(_ sender: UIButton) {
         self.round = 0
         self.score = 0
-        StartNewRound()
+        startNewRound()
         updatLabels()
     }
 }
