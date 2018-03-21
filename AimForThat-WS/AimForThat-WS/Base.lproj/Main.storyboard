@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="Sb4-9F-Fkc">
             <objects>
-                <viewController id="VOk-gx-ShK" sceneMemberID="viewController">
+                <viewController id="VOk-gx-ShK" customClass="GameViewController" customModule="AimForThat_WS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SBb-i3-GmV">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,26 +27,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="mMs-fZ-88f">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jvP-m7-MGJ">
-                                <rect key="frame" x="20" y="172.5" width="627" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-PQ-xFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="8" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Xbp-Qy-8K9">
-                                        <rect key="frame" x="16" y="0.0" width="575" height="31"/>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="BRe-dr-28a">
-                                        <rect key="frame" x="599" y="0.0" width="28" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a3u-xR-LXm">
                                 <rect key="frame" x="262" y="30" width="143.5" height="22"/>
                                 <subviews>
@@ -80,6 +60,9 @@
                                     <constraint firstAttribute="height" constant="50" id="w9u-Cj-yrN"/>
                                 </constraints>
                                 <state key="normal" image="StartOverIcon" backgroundImage="SmallButton"/>
+                                <connections>
+                                    <action selector="restartAction:" destination="VOk-gx-ShK" eventType="touchUpInside" id="F0h-2R-QN0"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="BlB-kt-5zH">
                                 <rect key="frame" x="180" y="323" width="307.5" height="22"/>
@@ -129,31 +112,46 @@
                                 <state key="highlighted" backgroundImage="Button-Highlighted">
                                     <color key="titleColor" red="1" green="0.92775485219999998" blue="0.97688406589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="showAlert:" destination="VOk-gx-ShK" eventType="touchUpInside" id="ssw-vd-Sro"/>
+                                </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6kU-oM-0kd">
+                                <rect key="frame" x="18" y="172.5" width="631" height="31"/>
+                                <connections>
+                                    <action selector="sliderMove:" destination="VOk-gx-ShK" eventType="valueChanged" id="SPK-LN-fJ0"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6kU-oM-0kd" firstAttribute="leading" secondItem="Q4K-l5-8Qu" secondAttribute="leading" constant="20" id="2qU-bF-6RG"/>
                             <constraint firstItem="mMs-fZ-88f" firstAttribute="centerY" secondItem="SBb-i3-GmV" secondAttribute="centerY" id="52G-NY-wQ9"/>
                             <constraint firstItem="sBk-fm-5dg" firstAttribute="top" secondItem="Q4K-l5-8Qu" secondAttribute="top" constant="30" id="6c8-B8-D59"/>
+                            <constraint firstItem="6kU-oM-0kd" firstAttribute="centerY" secondItem="SBb-i3-GmV" secondAttribute="centerY" id="7SV-2G-7gC"/>
                             <constraint firstItem="mMs-fZ-88f" firstAttribute="top" secondItem="SBb-i3-GmV" secondAttribute="topMargin" id="7hZ-Pe-CX5"/>
-                            <constraint firstItem="AbR-Xi-uXN" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="DPO-KM-ys1"/>
-                            <constraint firstItem="AbR-Xi-uXN" firstAttribute="top" secondItem="jvP-m7-MGJ" secondAttribute="bottom" constant="30" id="EFf-Mw-FgQ"/>
                             <constraint firstItem="a3u-xR-LXm" firstAttribute="top" secondItem="Q4K-l5-8Qu" secondAttribute="top" constant="30" id="FNi-0F-dtG"/>
                             <constraint firstItem="Q4K-l5-8Qu" firstAttribute="bottom" secondItem="BlB-kt-5zH" secondAttribute="bottom" constant="30" id="FS0-Wx-mJZ"/>
                             <constraint firstItem="8Nz-df-F6c" firstAttribute="leading" secondItem="Q4K-l5-8Qu" secondAttribute="leading" constant="20" id="Hhk-9l-vFZ"/>
+                            <constraint firstItem="AbR-Xi-uXN" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="LXb-yj-76l"/>
                             <constraint firstItem="a3u-xR-LXm" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="NoP-Py-JIc"/>
-                            <constraint firstItem="jvP-m7-MGJ" firstAttribute="leading" secondItem="Q4K-l5-8Qu" secondAttribute="leading" constant="20" id="RsL-zL-bgZ"/>
                             <constraint firstItem="Q4K-l5-8Qu" firstAttribute="trailing" secondItem="mMs-fZ-88f" secondAttribute="trailing" id="U6a-sX-U7e"/>
                             <constraint firstItem="BlB-kt-5zH" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="VQD-0S-o3y"/>
-                            <constraint firstItem="jvP-m7-MGJ" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="X9q-M6-dMw"/>
                             <constraint firstItem="Q4K-l5-8Qu" firstAttribute="trailing" secondItem="sBk-fm-5dg" secondAttribute="trailing" constant="20" id="Y2q-uZ-bta"/>
-                            <constraint firstItem="Q4K-l5-8Qu" firstAttribute="trailing" secondItem="jvP-m7-MGJ" secondAttribute="trailing" constant="20" id="hTg-NH-qXd"/>
+                            <constraint firstItem="Q4K-l5-8Qu" firstAttribute="trailing" secondItem="6kU-oM-0kd" secondAttribute="trailing" constant="20" id="kou-5J-P6d"/>
+                            <constraint firstItem="6kU-oM-0kd" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="sDZ-Uq-una"/>
                             <constraint firstItem="8Nz-df-F6c" firstAttribute="top" secondItem="Q4K-l5-8Qu" secondAttribute="top" constant="30" id="tC8-2j-rIj"/>
-                            <constraint firstItem="jvP-m7-MGJ" firstAttribute="centerY" secondItem="SBb-i3-GmV" secondAttribute="centerY" id="vIM-eF-k45"/>
+                            <constraint firstItem="AbR-Xi-uXN" firstAttribute="top" secondItem="6kU-oM-0kd" secondAttribute="bottom" constant="30" id="uQw-WV-nO0"/>
                             <constraint firstItem="mMs-fZ-88f" firstAttribute="centerX" secondItem="SBb-i3-GmV" secondAttribute="centerX" id="yWx-il-Bnb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q4K-l5-8Qu"/>
                     </view>
+                    <connections>
+                        <outlet property="roundLabel" destination="0Jp-1t-BHa" id="8pW-va-bve"/>
+                        <outlet property="scoreLabels" destination="12R-YO-aSB" id="OeZ-SD-TMW"/>
+                        <outlet property="slider" destination="6kU-oM-0kd" id="Y2n-3o-FFD"/>
+                        <outlet property="targetLabel" destination="Zgd-8l-nP0" id="Qbq-IG-KPf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vWv-iq-Wmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
